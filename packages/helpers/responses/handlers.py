@@ -3,6 +3,9 @@ from typing import Final
 from telegram import Update
 from telegram.ext import ContextTypes
 
+# Services
+from modules.consume.repositories.consume_queries import get_all_inventory
+
 with open('configs/telegram.json', 'r') as config_file:
     config = json.load(config_file)
     
@@ -12,7 +15,8 @@ async def handle_menu_res(text: str) -> str:
     val: str = text.lower()
 
     if '1' in val:
-        return '1'
+        data = await get_all_inventory()
+        return data
     
     if '0' in val:
         return 'Are you sure want to exit this chat?'
