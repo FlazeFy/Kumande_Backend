@@ -4,7 +4,8 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 # Services
-from modules.consume.repositories.consume_queries import get_all_inventory
+from modules.consume.repositories.consume_queries import get_all_consume
+from modules.stats.repositories.stats_queries import get_my_calorie_need
 
 with open('configs/telegram.json', 'r') as config_file:
     config = json.load(config_file)
@@ -15,7 +16,11 @@ async def handle_menu_res(text: str) -> str:
     val: str = text.lower()
 
     if '1' in val:
-        data = await get_all_inventory()
+        data = await get_all_consume()
+        return data
+    
+    if '2' in val:
+        data = await get_my_calorie_need()
         return data
     
     if '0' in val:

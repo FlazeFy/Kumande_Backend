@@ -1,8 +1,8 @@
 from modules.consume.models.consume_queries import model_get_consume_history
 from configs.configs import con
-from sqlalchemy import select, desc, and_
+from sqlalchemy import select, desc, and_, func
 
-async def get_all_inventory():
+async def get_all_consume():
     # Query builder
     query = select(
         model_get_consume_history.c.consume_name, 
