@@ -5,6 +5,7 @@ from telegram.ext import ContextTypes
 
 # Services
 from modules.consume.repositories.consume_queries import get_all_consume
+from modules.consume.repositories.schedule_queries import get_my_schedule
 from modules.stats.repositories.stats_queries import get_my_calorie_need
 from modules.user.repositories.user_queries import get_my_profile
 
@@ -22,6 +23,10 @@ async def handle_menu_res(text: str) -> str:
     
     if '2' in val:
         data = await get_my_calorie_need()
+        return data
+    
+    if '6' in val:
+        data = await get_my_schedule()
         return data
     
     if '9' in val:
