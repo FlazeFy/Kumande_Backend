@@ -31,7 +31,7 @@ async def get_all_consume():
     for dt in data:    
         if day_before == '' or day_before != dt.created_at.strftime('%d %b %Y'):
             day_before = dt.created_at.strftime('%d %b %Y')
-            res += f"\n"+day_before+"\n"
+            res += f"\n<b>"+day_before+"</b>\n"
             date = dt.created_at.strftime('%H:%M')
         else: 
             date = dt.created_at.strftime('%H:%M')
@@ -41,7 +41,7 @@ async def get_all_consume():
         else: 
             res += f"-"
 
-        res += f"{dt.consume_name} ({dt.consume_type}) from {dt.consume_from} at {date}\n"
+        res += f"<b>{dt.consume_name}</b> ({dt.consume_type}) from {dt.consume_from} at {date}\n"
         
         if dt.consume_comment is not None:
             res += f"Notes : {dt.consume_comment}\n"

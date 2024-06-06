@@ -17,15 +17,10 @@ if __name__ == '__main__':
     app = Application.builder().token(TOKEN).build()
 
     # Command
-    app.add_handler(CommandHandler('start', login_command))
-    app.add_handler(CommandHandler('home', start_command))
-    
-    # app.add_handler(CommandHandler('help', help_command))
-    # app.add_handler(CommandHandler('custom', custom_command))    
+    app.add_handler(CommandHandler('start', start_command))
 
     # Response
     app.add_handler(MessageHandler(filters.TEXT, handle_menu))
-    # app.add_error_handler(error)
 
     print('Polling...')
     app.run_polling(poll_interval=3)
